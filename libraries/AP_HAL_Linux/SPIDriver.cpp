@@ -35,6 +35,7 @@ LinuxSPIDeviceDriver LinuxSPIDeviceManager::_device[LINUX_SPI_DEVICE_NUM_DEVICES
 LinuxSPIDeviceDriver LinuxSPIDeviceManager::_device[LINUX_SPI_DEVICE_NUM_DEVICES] = {
     /* MPU9250 is restricted to 1MHz for non-data and interrupt registers */
     LinuxSPIDeviceDriver(0, AP_HAL::SPIDevice_MPU9250, SPI_MODE_3, 8, RPI_GPIO_7,  1*MHZ, 16*MHZ),
+    LinuxSPIDeviceDriver(0, AP_HAL::SPIDevice_MPU9250_AK8963, SPI_MODE_3, 8, RPI_GPIO_7,  1*MHZ, 16*MHZ),
 };
 #else
 // empty device table
@@ -151,8 +152,8 @@ void LinuxSPIDeviceManager::cs_assert(enum AP_HAL::SPIDevice type)
         }
         if (_device[i]._type != type) {
             if (_device[i]._cs->read() != 1) {
-                hal.console->printf("two CS enabled at once i=%u %u and %u\n",
-                                    (unsigned)i, (unsigned)type, (unsigned)_device[i]._type);
+                //hal.console->printf("two CS enabled at once i=%u %u and %u\n",
+                //                    (unsigned)i, (unsigned)type, (unsigned)_device[i]._type);
             }
         }
     }

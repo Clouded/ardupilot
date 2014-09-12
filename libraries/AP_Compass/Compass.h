@@ -15,6 +15,7 @@
 #define AP_COMPASS_TYPE_HMC5883L 0x03
 #define AP_COMPASS_TYPE_PX4      0x04
 #define AP_COMPASS_TYPE_VRBRAIN  0x05
+#define AP_COMPASS_TYPE_MPU9250  0x06
 
 // motor compensation types (for use with motor_comp_enabled)
 #define AP_COMPASS_MOT_COMP_DISABLED    0x00
@@ -33,6 +34,7 @@
 #elif CONFIG_HAL_BOARD == HAL_BOARD_AVR_SITL
 # define MAG_BOARD_ORIENTATION ROTATION_NONE
 #elif CONFIG_HAL_BOARD == HAL_BOARD_LINUX
+/* TODO: Here goes orintaion for Navio board" */
 # define MAG_BOARD_ORIENTATION ROTATION_NONE
 #elif CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
 # define MAG_BOARD_ORIENTATION ROTATION_NONE
